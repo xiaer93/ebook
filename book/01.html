@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--定义网页编码信息-->
+        <meta charset="utf-8"/>
+        <!--定义网页标题-->
+        <title>html基本介绍</title>
+        <!--定义网页信息，方便搜索引擎自动收集网站信息-->
+        <!--定义网页关键词-->
+        <meta name="keywords" content=""/>
+        <!--定义网页描述内容-->
+        <meta name="description" content=""/>
+        <!--/定义网页信息，方便搜索引擎自动收集网站信息-->
+        <!--优化网页在移动设备上的显示效果-->
+        <meta name="viewport" content="width=device-width"/>
+        <!--定义页面2秒后跳转指定链接。http-equiv还可以对cache、cookie等进行控制！-->
+        <meta http-equiv="refresh" content="2；URL=#">
+        <!--导入css样式表-->
+        <link rel="stylesheet" href="./css/01/style.css"/>
+        <!--设置网页的小图标-->
+        <link rel="shortcut icon" href="../source/img/favicon.ico"/>
+        <link rel="apple-touch-icon" href="../source/img/touchicon.png"/>
+        <!--设置css样式-->
+        <style>
+            .g-doc{
+                margin: 10px;
+                padding: 10px;
+                border: 1px solid #ddd;
+                box-shadow: 1px 1px 5px #aaa;
+            }
+        </style>
+
+        <!--设置或者导入js脚本-->
+        <script>
+            window.onload=function () {
+                alert('我是js脚本！');
+            }
+        </script>
+    </head>
+    <body>
+    <!--主要编辑区域-->
+    <div class="g-doc">
+        <p>hello world！</p>
+    </div>
+    <!--/主要编辑区域-->
+    <!--导入外部js脚本-->
+    <script src="./js/01/index.js"></script>
+    </body>
+</html>

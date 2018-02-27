@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>html常用标签</title>
+        <meta name="keywords" content="html 常用标签"/>
+        <meta name="description" content="html常用标签"/>
+        <meta name="viewport" content="width=device-width"/>
+        <link rel="stylesheet" href="../source/css/style.css"/>
+
+        <!--设置css样式-->
+        <style>
+            .g-doc section{
+                margin: 10px;
+                padding: 10px;
+                border: 1px solid #ddd;
+                box-shadow: 1px 1px 5px #aaa;
+            }
+            .g-doc table{
+                border: 1px solid #ddd;
+                border-collapse: collapse;
+            }
+            .g-doc table caption{
+                font-size: 1.2em;
+                font-weight: bold;
+            }
+            .g-doc table td,
+            .g-doc table th{
+                padding: 0.3em 0.6em;
+                border: 1px solid #ddd;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div class="g-doc" id="top">
+            <!--文字标签-->
+            <section>
+                <h2>文字标签</h2>
+                <!--h为标题，p为文字段落，hr为水平线标签！-->
+                <h3>静夜思</h3>
+                <p>床前明月光，疑是地上霜</p>
+                <p>举头望明月，低头思故乡</p>
+                <hr>
+
+                <!--br为换行标签-->
+                <!--补充：html5新增wbr标签，弱换行标签-->
+                <h3>静夜思</h3>
+                <p>床前明月光，疑是地上霜<br>举头望明月，低头思故乡</p>
+            </section>
+            <section>
+                <!--strong加粗，em斜体。二者都有利于seo（增加搜索引擎爬取权重！）-->
+                <!--sub和sup分别为上下标签，在表示化学公式或者数学运算有用！-->
+                <!--s为删除线，u为下划线。补充：推荐通过css的text-decoration属性设置！-->
+                <!--span和css，配合使用，修饰行内元素！-->
+                <!--浏览器预留了部分字符，如"<"，为了正确显示预留字符则必须使用实体字符集！-->
+                <!--补充：html5新增ruby标签，注释音标！-->
+                <h2>文字标签</h2>
+                <p>
+                    <strong>我是粗体</strong><br>
+                    <em>我是斜体</em><br>
+                    H<sub>2</sub>SO<sub>4</sub>是硫酸的化学式！<br>
+                    <s>原价：￥6.5/kg</s><br>
+                    <u>hello world!</u><br>
+                    <span>我是span标签</span><br>
+                    <ruby>我<rt>wo</rt>是<rt>shi</rt>谁<rt>shui</rt></ruby>
+                </p>
+            </section>
+            <section>
+                <h2>实体字符集</h2>
+                <p>
+                    我是实体字符集：&lt;&nbsp;hello word!&nbsp;&gt;<br>
+                </p>
+            </section>
+            <section>
+                <h2>超链接标签</h2>
+                <!--超链接标签常见作用：1.外部链接（如百度）；2.相对链接（如下一章）；3.锚点作用（如回到顶部）-->
+                <p>
+                    <a href="https://baidu.com">百度一下</a>&nbsp;&nbsp;
+                    <a href="#top">回到顶部</a>&nbsp;&nbsp;
+                    <a href="03.html">下一章</a>&nbsp;&nbsp;
+                </p>
+            </section>
+            <section>
+                <h2>表格标签</h2>
+                <!--常见的表格，th为标题，td为数据！-->
+                <table>
+                    <caption>表格标题</caption>
+                    <thead>
+                        <tr>
+                            <th>书名</th>
+                            <th>得分</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>html指南</td>
+                            <td>90</td>
+                        </tr>
+                        <tr>
+                            <td>javascript手册</td>
+                            <td>80</td>
+                        </tr>
+                        <tr>
+                            <td>css秘密</td>
+                            <td>85</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>平均分</td>
+                            <td>85</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </section>
+            <section>
+                <h2>列表</h2>
+                <!--ul为无序列表，ol为有序列表，dl为自定义列表-->
+                <ul>
+                    <li>项目一</li>
+                    <li>项目二</li>
+                </ul>
+                <hr>
+                <ol>
+                    <li>项目一</li>
+                    <li>项目二</li>
+                </ol>
+                <hr>
+                <dl>
+                    <dt>html手册</dt>
+                    <dd>用来学习html的百科全书！</dd>
+                    <dt>javascript指南</dt>
+                    <dd>用来学习javascript的百科全书！</dd>
+                </dl>
+            </section>
+            <section>
+                <h2>表单标签</h2>
+                <form action="javascript:void(0)">
+                    <p><label for="">Text</label><input type="text"></p>
+                    <p><label for="">Password</label><input type="password"></p>
+                    <p><label for="">Search</label><input type="search"></p>
+                    <p><label for="">Number</label><input type="number"></p>
+                    <p><label for="">Url</label><input type="url"></p>
+                    <p><label for="">Tel</label><input type="tel"></p>
+                    <p><label for="">Email</label><input type="email"></p>
+                    <p><label for="">File</label><input type="file"></p>
+                    <p><label for="">Range</label><input type="range"></p>
+                    <p><label for="">Color</label><input type="color"></p>
+                    <p><label for="">Time</label><input type="time"></p>
+                    <p><label for="">Date</label><input type="date"></p>
+                    <p><label for="">Radio</label><input type="radio"></p>
+                    <p><label for="">CheckBox</label><input type="checkbox"></p>
+                    <p><label for="">Button</label><input type="button" value="按钮"></p>
+                    <p><label for="">Reset</label><input type="reset"></p>
+                    <p><label for="">Sumbit</label><input type="submit"></p>
+                    <p><label for="">Hidden</label><input type="hidden"></p>
+                </form>
+                <hr>
+                <form action="#">
+                    <p><textarea name="" id="infoMe" cols="30" rows="4"></textarea></p>
+                    <p>
+                        <select name="" id="infoSe">
+                        <option value="0" selected disabled>请选择一项</option>
+                        <option value="1">选项1</option>
+                        <option value="2">选项2</option>
+                        </select>
+                    </p>
+                    <p><label for="">请输入查询内容：</label><input type="search" list="car"></p>
+                    <datalist id="car">
+                        <option value="c1">小车</option>
+                        <option value="c2">大车</option>
+                    </datalist>
+                    <p><button>Button</button></p>
+                </form>
+                <hr>
+                <form action="javascript:void(0)">
+                    <fieldset>
+                        <legend>登录框</legend>
+                        <p><label for="">用户名</label><input type="text"></p>
+                        <p><label for="">密码</label><input type="password"></p>
+                        <input type="button" value="登录">
+                    </fieldset>
+                </form>
+            </section>
+            <section>
+                <h2>多媒体标签</h2>
+                <!--多媒体标签，支持导入图片视频音频等！-->
+                <img src="./source/webkitflow.png" alt="webkitflow" style="display: block;">
+                <embed src='http://player.youku.com/player.php/sid/XMTM2Mzg3MjA3Mg==/v.swf' allowFullScreen='true' quality='high' width='480' height='400' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>
+                <!--html5新增的标签-->
+                <video src=""></video>
+                <audio src=""></audio>
+            </section>
+            <section>
+                <h2>框架标签iframe</h2>
+                <iframe src="https://baidu.com" frameborder="0"></iframe>
+            </section>
+            <section>
+                <h2>布局标签</h2>
+                <!--支持语义化，提供更友好的seo！-->
+                <ul>
+                    <li>div</li>
+                    <li>span</li>
+                    <li>header</li>
+                    <li>main</li>
+                    <li>footer</li>
+                    <li>menu</li>
+                    <li>nav</li>
+                    <li>aside</li>
+                    <li>article</li>
+                    <li>section</li>
+                    <li>time</li>
+                    <li>address</li>
+                </ul>
+            </section>
+            <section>
+                <h2>块元素、行内元素、行内块元素</h2>
+                <div class="parent">
+                    <!--块级元素独占一行，内部可以容纳其他元素！-->
+                    <p>我是块元素：block</p>
+                    <p>我是块元素：block</p>
+                </div>
+                <div class="parent">
+                    <!--行内元素水平方向依次排列，若父容器宽度不够则自动换行；内部只能容纳文字或行内元素！-->
+                    <!--行内元素设置的上下margin和padding不会影响行内元素的排列（即可以认为不能设置）；行内元素不能设置width和height！-->
+                    <span>我是行内元素：inline</span>
+                    <span>我是行内元素：inline</span>
+                    <span>我是行内元素：inline</span>
+                    <span>我是行内元素：inline</span>
+                </div>
+                <div class="parent">
+                    <!--行内块元素综合块元素和行内元素的特点：拥有块级元素的所有特点，同时在行内依次排列！-->
+                    <input type="text" value="我是行内块元素：inline-block">
+                    <input type="text" value="我是行内块元素：inline-block">
+                </div>
+                <style>
+                    .parent{
+                        height: 120px;
+                        width:100%;
+                        border: 1px solid #000;
+                    }
+                    .parent p,
+                    .parent span,
+                    .parent input{
+                        width:45%;
+                        height: 25%;
+                        padding: 5px;
+                        margin: 5px;
+                        color: #fff;
+                        background-color: crimson;
+                    }
+                </style>
+            </section>
+        </div>
+    </body>
+</html>
