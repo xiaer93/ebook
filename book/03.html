@@ -811,6 +811,7 @@
                 }
             </style>
         </section>
+
         <section>
             <h2>搜索框</h2>
             <div id="search">
@@ -836,105 +837,105 @@
                     </form>
                 </div>
             </div>
-        </section>
-        <style>
-            #search{
-                width: 360px;
-                margin: 0 auto;
-                margin-top: 50px;
-                list-style: none;
-                font:normal 12px/1.5em "Adobe 宋体 Std L","Arial","sans-serif";
-                overflow: hidden;
-            }
-            #search h3,h4{
-                width: 0;
-                height: 0;
-                display: none;/*seo抓取不到内容？*/
-            }
-            #search select{
-                float: left;
-                width: 60px;
-                height: 25px;
-                line-height: 25px;
-            }
-            #search_tips{
-                float: left;
-                position: relative;
-                width: 204px;
-                height:100px;
-                margin:0 5px;
-            }
-            #search input{
-                width: 196px;
-                height: 25px;
-                padding: 2px 4px;
-                margin:0 5px;
-                border: 1px solid #619FCF;
-            }
-            #search button{
-                float: left;
-                width: 59px;
-                height: 25px;
-                line-height: 25px;
-                cursor: pointer;
-            }
-            #search ul{
-                position: absolute;
-                margin: 0 5px;
-                width:184px;
-                padding: 5px 5px 0;
-                border: 1px solid #619fcf;
-                border-top: transparent;;
-                list-style: none;
-            }
-            #search ul li{
-                margin: 0;              /*高度为字体高度撑起，没有多余padding和content，所以显得居中！*/
-                overflow: hidden;
-            }
-            #search ul li a{
-                float: left;
-                text-decoration: none;
-                color: #333;
-            }
-            #search ul li span{
-                float: right;
-                color: #999;
-            }
-        </style>
-        <script>
-
-            window.onload=function () {
-              var a=document.querySelectorAll('a');
-              a.forEach(function (t) {
-                  t.onclick=function (e) {
-                      e.preventDefault();
-                  }
-              })
-            };
-            function searchTips() {
-                var sdiv=document.getElementById("search_tips");
-                var sa=sdiv.getElementsByTagName("input")[0];
-                var su=sdiv.getElementsByTagName("ul")[0];
-                var sli=su.getElementsByTagName("li");
-                su.style.display="none";
-
-                sdiv.addEventListener("focus",function () {
-                    su.style.display="block";
-                },true);
-                sdiv.addEventListener("blur",function () {
-
-                },true);
-                for(var i=0;i<sli.length;++i){
-                    sli[i].addEventListener("click",function () {
-                        su.style.display="none";
-                        sa.value=this.firstChild.textContent;
-                        /*a标签特立独行？*/
-                    },false);
+            <style>
+                #search{
+                    width: 360px;
+                    margin: 0 auto;
+                    margin-top: 50px;
+                    list-style: none;
+                    font:normal 12px/1.5em "Adobe 宋体 Std L","Arial","sans-serif";
+                    overflow: hidden;
                 }
-            }
-            searchTips();
+                #search h3,h4{
+                    width: 0;
+                    height: 0;
+                    display: none;/*seo抓取不到内容？*/
+                }
+                #search select{
+                    float: left;
+                    width: 60px;
+                    height: 25px;
+                    line-height: 25px;
+                }
+                #search_tips{
+                    float: left;
+                    position: relative;
+                    width: 204px;
+                    height:100px;
+                    margin:0 5px;
+                }
+                #search input{
+                    width: 196px;
+                    height: 25px;
+                    padding: 2px 4px;
+                    margin:0 5px;
+                    border: 1px solid #619FCF;
+                }
+                #search button{
+                    float: left;
+                    width: 59px;
+                    height: 25px;
+                    line-height: 25px;
+                    cursor: pointer;
+                }
+                #search ul{
+                    position: absolute;
+                    margin: 0 5px;
+                    width:184px;
+                    padding: 5px 5px 0;
+                    border: 1px solid #619fcf;
+                    border-top: transparent;;
+                    list-style: none;
+                }
+                #search ul li{
+                    margin: 0;              /*高度为字体高度撑起，没有多余padding和content，所以显得居中！*/
+                    overflow: hidden;
+                }
+                #search ul li a{
+                    float: left;
+                    text-decoration: none;
+                    color: #333;
+                }
+                #search ul li span{
+                    float: right;
+                    color: #999;
+                }
+            </style>
+            <script>
 
-        </script>
+                window.onload=function () {
+                    var a=document.querySelectorAll('a');
+                    a.forEach(function (t) {
+                        t.onclick=function (e) {
+                            e.preventDefault();
+                        }
+                    })
+                };
+                function searchTips() {
+                    var sdiv=document.getElementById("search_tips");
+                    var sa=sdiv.getElementsByTagName("input")[0];
+                    var su=sdiv.getElementsByTagName("ul")[0];
+                    var sli=su.getElementsByTagName("li");
+                    su.style.display="none";
+
+                    sdiv.addEventListener("focus",function () {
+                        su.style.display="block";
+                    },true);
+                    sdiv.addEventListener("blur",function () {
+
+                    },true);
+                    for(var i=0;i<sli.length;++i){
+                        sli[i].addEventListener("click",function () {
+                            su.style.display="none";
+                            sa.value=this.firstChild.textContent;
+                            /*a标签特立独行？*/
+                        },false);
+                    }
+                }
+                searchTips();
+
+            </script>
+        </section>
     </div>
 
 </body>
