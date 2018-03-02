@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文档流</title>
+    <style>
+        .g-doc section{
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            box-shadow: 1px 1px 5px #aaa;
+        }
+    </style>
+</head>
+<body>
+
+<div class="g-doc">
+    <section>
+        <h2>正常文档流</h2>
+        <!--正常文档流，将窗体自上而下分成一行一行，块元素独占一行，相邻行内元素在每行中按从左到右地依次排列元素。-->
+        <div class="m-layout">
+            <div class="header">header</div>
+            <div class="container">
+                <div class="news-one">1</div>
+                <div class="news-two">2</div>
+                <div class="news-three">3</div>
+            </div>
+            <div class="footer">footer</div>
+        </div>
+
+        <style>
+            .m-layout{
+
+            }
+            .m-layout div{
+                height: 20px;
+                margin: 5px;
+                padding: 5px;
+                border:1px solid #000;
+            }
+            .m-layout .container{
+                height: 80px;
+            }
+            .m-layout .container div{
+                display: inline-block;
+            }
+        </style>
+    </section>
+    <section>
+        <h2>脱离文档流之float</h2>
+        <div class="m-layoutF">
+            <div class="logo"></div>
+            <div class="menu">
+                <a href="">菜单1</a>
+                <a href="">菜单2</a>
+            </div>
+        </div>
+        <style>
+            .m-layoutF{
+                overflow: hidden;
+            }
+            .m-layoutF .logo{
+                width:50px;
+                height: 50px;
+                background: rgba(255,0,0,0.5);
+                float: left;/*logo脱离文档流*/
+            }
+            .m-layoutF .menu{
+                text-align: right;
+                border: 1px solid #000;
+            }
+        </style>
+    </section>
+
+    <section>
+        <h2>脱离文档流之position</h2>
+        <div class="m-layoutP">
+            <div class="info">
+                脱离文档流脱离文档流脱离文档流脱离文档流脱离文档流脱离文档流脱离文档流脱离文档流脱离文档流脱离文档流脱离文档流脱离文档流
+            </div>
+            <div class="absolute">absolute定位</div>
+            <div class="fixed">fixed定位</div>
+        </div>
+        <style>
+            .m-layoutP{
+                position: relative;
+            }
+            .m-layoutP .info{
+                border:1px solid #000;
+            }
+            .m-layoutP .absolute{
+                position: absolute;
+                width: 50px;
+                height: 50px;
+                background: #f00;
+                left:50%;
+                margin-left: -25px;
+                bottom:0;
+            }
+            .m-layoutP .fixed{
+                position: fixed;
+                width: 50px;
+                height: 50px;
+                background: #f00;
+                right:0;
+                top:300px;
+            }
+        </style>
+    </section>
+    <section>
+        <h2>包含块的应用</h2>
+        <div class="m-banner">
+            <div class="logo">
+                <img src="./source/containBox.jpg" alt="">
+            </div>
+            <div class="info">
+                <p>通过包含块，实现info栏高度随图片变化而变化！</p>
+            </div>
+        </div>
+        <style>
+            .m-banner{
+                position: relative;
+                overflow: hidden;
+            }
+            .m-banner .logo{
+                float: left;
+                box-sizing: border-box;
+                width: 60%;
+                border: 1px solid #f00;
+            }
+            .m-banner .logo img{
+                width:100%;
+            }
+            .m-banner .info{
+                position: absolute;/*通过包含块，实现info栏高度随图片变化而变化！*/
+                box-sizing: border-box;
+                width: 40%;
+                height:100%;
+                right:0;
+                top:0;
+                border:1px solid #000;
+            }
+        </style>
+    </section>
+    <section>
+        <h2>层叠上下文</h2>
+        <!--同一层叠上下文中，比较层叠水平，根据经典7层图得出文字在图片之上！-->
+        <div class="m-stackup">
+            我是文字我是文字我是文字我是文字我是文字我是文字我是文字
+            <img src="./source/stackup.png" alt="">
+            我是文字我是文字我是文字我是文字我是文字我是文字我是文字
+        </div>
+        <style>
+            .m-stackup{
+                overflow: hidden;
+            }
+            .m-stackup img{
+                width: 30%;
+                float: left;
+                margin-right: -100px;
+            }
+        </style>
+    </section>
+</div>
+
+</body>
+</html>

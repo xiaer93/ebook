@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IFC和</title>
+    <style>
+        .g-doc section{
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            box-shadow: 1px 1px 5px #aaa;
+        }
+    </style>
+</head>
+<body>
+
+<div class="g-doc">
+    <section>
+        <h2>ifc</h2>
+        <div class="m-ifc">
+            <div class="wrapper">
+                <!--ifc的宽度由内容和兄弟元素是否为float共同决定-->
+                <article class="one">
+                    <div class="yellow">
+                        应用：图文排版！
+                    </div>
+                    <span>我是inline元素，参与构建IFC。我的宽度由内容和兄弟float元素决定。我的高度由内容决定！</br>
+                        我是inline元素，参与构建IFC。我的宽度由内容和兄弟float元素决定。我的高度由内容决定！
+			        </span>
+                </article>
+                <!--每一行的行高由该行多个inline元素决定-->
+                <article class="two">
+                    <span class="parent">
+                        one元素
+                    </span>
+                    <span class="child">
+                        two元素
+                    </span>
+                    <div>行高由多个同行inline元素的行高决定，取他们最大值！</div>
+                </article>
+                <!--IFC拆散分布在多行-->
+                <article class="three">
+                    <span>当内容足够多时，会发生跨行！。。。。。。。。。。。。。。。。。。。。。。跨行时将创建多个ifc，margin-left作用于第一个ifc！</span>
+                </article>
+                <!--inline-block可以设置宽高margin和padding，还可以同行排列-->
+                <article>
+                    <span style="display:inline-block;" class="yellow">inline-block</span>
+                </article>
+            </div>
+        </div>
+        <style>
+            .m-ifc .wrapper{
+                width:600px;
+                margin:0 auto;
+            }
+            .m-ifc .wrapper article{
+                border:1px solid black;
+                margin:20px 0;
+                overflow:hidden;
+            }
+            /*1*/
+            .m-ifc .yellow{
+                float:left;
+                width:100px;
+                height:50px;
+                background:yellow;
+            }
+            /*2*/
+            .m-ifc .two span{
+                border:1px solid red;
+            }
+            .m-ifc .two .parent{
+                line-height:1;
+                font-size:16px;
+                vertical-align:middle;
+            }
+            .m-ifc .two .child{
+                font-size:35px;
+                vertical-align:middle;
+            }
+            .m-ifc .two div{
+                border:1px solid green;
+            }
+            /*3*/
+            .m-ifc .three span{
+                margin-left:20px;
+            }
+        </style>
+    </section>
+
+    <section>
+        <h2>bfc</h2>
+
+        <div class="m-bfc">
+            <div class="wrapper">
+                <!--bfc内部box外边距发生重叠-->
+                <article class="one">
+                    <div class="margin_10">
+                        第一个box，上下margin，10px
+                    </div>
+                    <div class="wrap">
+                        <div class="margin_10">
+                            第二个box，上下margin，10px</br>
+                            规则：bfc内相邻box外边距叠加！
+                        </div>
+                    </div>
+                </article>
+                <!--bfc不与浮动重叠-->
+                <article class="two">
+                    <div class="float-left">
+                        这是浮动元素
+                    </div>
+                    <div class="bfc">
+                        这是bfc，块级上下文！</br>
+                        规则：bfc不与浮动元算重叠！
+                    </div>
+                </article>
+                <!--计算高度时，内部float参与计算-->
+                <article class="three">
+                    <div class="clearFloat">
+                        <div class="float-left">
+                            这是浮动元素</br>
+                            规则：计算高度时，内部float参与计算
+                        </div>
+                    </div>
+                </article>
+                <!--bfc是一个隔离容器，容器外面不会影响到容器内，反之同理。bfc清除浮动应用了这条规则！-->
+                <article class="four">
+                    <div class="contain">
+                        <div class="margin_10" style="background:yellow;">
+                            这是bfc内部的box。fontsize继承为25px;margin为10px</br>
+                            规则：bfc为独立容器，内部box的margin都被包裹，不会影响外部元素！
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <style>
+            .m-bfc .wrapper{
+                width:600px;
+                margin:0 auto;
+            }
+            .m-bfc .wrapper article{
+                border:1px solid black;
+                margin:20px 0;
+            }
+            /*1*/
+            .m-bfc .margin_10{
+                margin:10px 0;
+                background:red;
+            }
+            .m-bfc .wrap{
+                overflow:hidden;
+            }
+            /*2*/
+            .m-bfc .float-left{
+                float:left;
+                width:100px;
+                height:80px;
+                background:red;
+            }
+            .m-bfc .bfc{
+                height:100px;
+                overflow:hidden;
+                background:yellow;
+            }
+
+            /*3*/
+            .m-bfc .clearFloat{
+                overflow:hidden;
+                padding:10px;/*外层如果不是bfc，会发生高度坍塌，设置padding仅仅为了好看！*/
+                background:yellow;
+            }
+            /*4*/
+            .m-bfc .contain{
+                font-size:25px;
+                overflow:hidden;
+                background:red;
+            }
+        </style>
+    </section>
+</div>
+
+</body>
+</html>

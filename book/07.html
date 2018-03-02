@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基本布局</title>
+    <style>
+        .g-doc section{
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            box-shadow: 1px 1px 5px #aaa;
+        }
+        .g-doc article{
+            overflow: hidden;/*创建bfc,避免父子外边距叠加*/
+            color: #fff;
+        }
+        .g-twocols section{
+            height:150px;
+        }
+        .g-thrcols section{
+            height: 250px;
+        }
+    </style>
+</head>
+<body>
+<div class="g-doc">
+
+    <div class="g-twocols">
+        <!--float布局-->
+        <section>
+            <h2>两栏布局之float</h2>
+            <div class="layout-float">
+                <article class="float-left">
+                    <p>这是左边</p>
+                </article>
+                <article class="float-right">
+                    <p>这是右边</p>
+                    <p>float布局</p>
+                </article>
+            </div>
+            <style>
+                .g-twocols .layout-float article{
+                    height:auto;
+                }
+                .g-twocols .float-left{
+                    float:left;
+                    width:200px;
+                    background:red;
+                }
+                .g-twocols .float-right{
+                    margin-left:200px;
+                    background:blue;
+                }
+            </style>
+        </section>
+        <!--margin和position布局-->
+        <section>
+            <h2>两栏布局之position+margin</h2>
+            <div class="layout-position-margin">
+                <article class="position-margin-left">
+                    <p>这是左边</p>
+                </article>
+                <article class="position-margin-right">
+                    <p>这是右边</p>
+                    <p>position和margin布局</p>
+                </article>
+            </div>
+            <style>
+                .g-twocols .layout-position-margin{
+                    position:relative;
+                }
+                .g-twocols .layout-position-margin>article{
+                    height:auto;
+                }
+                .g-twocols .position-margin-left{
+                    /*position：absolute以包容块的padding-box为基准！*/
+                    position:absolute;
+                    left:0;
+                    top:0;
+                    width:200px;
+                    background:red;
+                }
+                .g-twocols .position-margin-right{
+                    margin-left:200px;
+                    background:blue;
+                }
+            </style>
+        </section>
+        <!--float加负margin布局-->
+        <section>
+            <h2>两栏布局之float+margin</h2>
+            <div class="layout-float-margin">
+                <article class="margin-right">
+                    <p>这是右边</p>
+                    <p>负margin布局</p>
+                </article>
+                <article class="margin-left">
+                    <p>这是左边</p>
+                </article>
+            </div>
+            <style>
+                .g-twocols .layout-float-margin>article{
+                    height:auto;
+                    float:left;
+                }
+                .g-twocols .margin-left{
+                    width:200px;
+                    background:red;
+                    margin-left:-100%;
+                    /*此刻可以使用position：relative或者在marginright中嵌套子元素实现分栏*/
+                }
+                .g-twocols .margin-right{
+                    box-sizing:border-box;
+                    padding-left:200px;
+                    width:100%;
+                    background:blue;
+                }
+            </style>
+        </section>
+        <!--inline-block布局-->
+        <section>
+            <h2>两栏布局之inline-block</h2>
+            <div class="layout-inline">
+                <article class="inline-left">
+                    <p>这是左边</p>
+                </article>
+                <article class="inline-right">
+                    <p>这是右边</p>
+                    <p>inline-block布局</p>
+                </article>
+            </div>
+            <style>
+                .g-twocols .layout-inline{
+                    font-size:0;
+                }
+                .g-twocols .layout-inline>article{
+                    height:auto;
+                    display:inline-block;
+                    font-size:16px;
+                }
+                .g-twocols .inline-left{
+                    width:200px;
+                    background:red;
+                }
+                .g-twocols .inline-right{
+                    width:calc(100% - 200px);
+                    background:blue;
+                }
+            </style>
+        </section>
+        <!--table布局-->
+        <section>
+            <h2>两栏布局之table</h2>
+            <div class="layout-table">
+                <article class="table-left">
+                    <p>这是左边</p>
+                </article>
+                <article class="table-right">
+                    <p>这是右边</p>
+                    <p>table布局</p>
+                </article>
+            </div>
+            <style>
+                .g-twocols .layout-table{
+                    display:table;
+                    width: 95%;
+                }
+                .g-twocols .layout-table>article{
+                    display:table-cell;
+                }
+                .g-twocols .table-left{
+                    width:200px;
+                    min-width:200px;
+                    background:red;
+                }
+                .g-twocols .table-right{
+                    background:blue;
+                }
+            </style>
+        </section>
+        <!--flex布局-->
+        <section>
+            <h2>两栏布局之flex</h2>
+            <div class="layout-flex">
+                <article class="flex-left">
+                    <p>这是左边</p>
+                </article>
+                <article class="flex-right">
+                    <p>这是右边</p>
+                    <p>flex布局</p>
+                </article>
+            </div>
+            <style>
+                .g-twocols .layout-flex{
+                    display:flex;
+                    flex-direction:rows;
+                }
+                .g-twocols .flex-left{
+                    width:200px;
+                    flex:0 0 auto;
+                    background:red;
+                }
+                .g-twocols .flex-right{
+                    flex:1 1 auto;
+                    background:blue;
+                }
+            </style>
+        </section>
+        <!--grid布局-->
+        <section>
+            <h2>两栏布局之grid</h2>
+            <div class="layout-grid">
+                <article class="grid-left">
+                    <p>这是左边</p>
+                </article>
+                <article class="grid-right">
+                    <p>这是右边</p>
+                    <p>grid布局</p>
+                </article>
+            </div>
+            <style>
+                .g-twocols .layout-grid{
+                    display:grid;
+                    grid-template-columns:200px 1fr;
+                }
+                .g-twocols .grid-left{
+                    grid-column:1;
+                    background:red;
+                }
+                .g-twocols .grid-right{
+                    grid-column:2;
+                    background:blue;
+                }
+            </style>
+        </section>
+        <!--position布局-->
+        <section>
+            <h2>两栏布局之position</h2>
+            <div class="layout-position">
+                <article class="position-left">
+                    <p>这是左边</p>
+                </article>
+                <article class="position-right">
+                    <p>这是右边</p>
+                    <p>position布局</p>
+                </article>
+            </div>
+
+            <style>
+                .g-twocols .layout-position{
+                    position:relative;
+                }
+                .g-twocols .position-left{
+                    width:200px;
+                    background:red;
+                }
+                .g-twocols .position-right{
+                    /*必须同时设置left和right，否则长度自适应了！！*/
+                    position:absolute;
+                    left:200px;/*left以包容块padding-box为基准！*/
+                    top:0;
+                    bottom:0;
+                    right:0;
+                    background:blue;
+                }
+            </style>
+        </section>
+    </div>
+
+    <!--三栏布局-->
+    <div class="g-thrcols">
+        <!--float布局-->
+        <section>
+            <h2>三栏布局之float</h2>
+            <div class="layout-float3">
+                <article class="float-left">
+                    <p>这是左边</p>
+                </article>
+                <article class="float-right">
+                    <p>这是右边</p>
+                </article>
+                <article class="float-center">
+                    <p>这是中间</p>
+                    <p>float布局</p>
+                    <p>p标签有margin，所以出现中间部分没有对齐</p>
+                </article>
+            </div>
+            <style>
+                .g-thrcols .layout-float3>article{
+                    height:auto;
+                }
+                .g-thrcols .float-left{
+                    float:left;
+                    width:200px;
+                    background:red;
+                }
+                .g-thrcols .float-right{
+                    float:right;
+                    width:200px;
+                    background:blue;
+                }
+                .g-thrcols .float-center{
+                    margin:0 200px;
+                    background:yellow;
+                }
+            </style>
+        </section>
+        <!--圣杯和双飞翼布局-->
+        <section>
+            <h2>三栏布局之圣杯</h2>
+            <div class="layout-grail">
+                <article class="grail-center">
+                    <p>这是中间</p>
+                    <p>圣杯布局</p>
+                </article>
+                <article class="grail-left">
+                    <p>这是左边</p>
+                </article>
+                <article class="grail-right">
+                    <p>这是右边</p>
+                </article>
+            </div>
+            <style>
+                .g-thrcols .layout-grail{
+                    position:relative;
+                }
+                .g-thrcols .layout-grail>article{
+                    height:auto;
+                }
+                .g-thrcols .layout-grail{
+                    width:100%;
+                }
+                .g-thrcols .grail-center{
+                    box-sizing:border-box;
+                    padding:0 200px;
+                    float:left;
+                    width:100%;
+                    background:yellow;
+                }
+
+                .g-thrcols .grail-left{
+                    float:left;
+                    width:200px;
+                    margin-left:-100%;
+                    background:red;
+                }
+                .g-thrcols .grail-right{
+                    float:left;
+                    width:200px;
+                    margin-left:-200px;
+                    background:blue;
+                }
+            </style>
+        </section>
+        <!--inline-block布局-->
+        <section>
+            <h2>三栏布局之inline-block</h2>
+            <div class="layout-inline">
+                <article class="inline-left">
+                    <p>这是左边</p>
+                </article>
+                <article class="inline-center">
+                    <p>这是中间</p>
+                    <p>inline-block和calc布局</p>
+                    <p>inline-block默认为基线对齐！vertical-align:baseline</p>
+                </article>
+                <article class="inline-right">
+                    <p>这是右边</p>
+                </article>
+            </div>
+            <style>
+                .g-thrcols .layout-inline{
+                    font-size:0;
+                }
+                .g-thrcols .layout-inline>article{
+                    height:auto;
+                    display:inline-block;
+                    font-size:16px;
+                }
+                .g-thrcols .inline-left{
+                    width:200px;
+                    background:red;
+                }
+                .g-thrcols .inline-center{
+                    width:calc(100% - 400px);
+                    background:yellow;
+                }
+                .g-thrcols .inline-right{
+                    width:200px;
+                    background:blue;
+                }
+            </style>
+
+        </section>
+        <!--table布局-->
+        <section>
+            <h2>三栏布局之table</h2>
+            <div class="layout-table">
+                <article class="table-left">
+                    <p>这是左边</p>
+                </article>
+                <article class="table-center">
+                    <p>这是中间</p>
+                    <p>table布局</p>
+                </article>
+                <article class="table-right">
+                    <p>这是右边</p>
+                </article>
+            </div>
+            <style>
+                .g-thrcols .layout-table{
+                    display:table;
+                }
+                .g-thrcols .layout-table>article{
+                    display:table-cell;
+                }
+                .g-thrcols .table-left{
+                    width:200px;
+                    min-width:200px;
+                    background:red;
+                }
+                .g-thrcols .table-center{
+
+                    background:yellow;
+                }
+                .g-thrcols .table-right{
+                    width:200px;
+                    min-width:200px;
+                    background:blue;
+                }
+            </style>
+
+        </section>
+        <!--flex布局-->
+        <section>
+            <h2>三栏布局之flex</h2>
+            <div class="layout-flex">
+                <article class="flex-left">
+                    <p>这是左边</p>
+                </article>
+                <article class="flex-center">
+                    <p>这是中间</p>
+                    <p>flex布局</p>
+                </article>
+                <article class="flex-right">
+                    <p>这是右边</p>
+                </article>
+            </div>
+            <style>
+                .g-thrcols .layout-flex{
+                    display:flex;
+                    flex-direction:rows;
+                }
+                .g-thrcols .layout-flex>article{
+
+                }
+                .g-thrcols .flex-left{
+                    width:200px;
+                    flex:0 0 auto;
+                    background:red;
+                }
+                .g-thrcols .flex-center{
+                    flex:1 1 auto;
+                    background:yellow;
+                }
+                .g-thrcols .flex-right{
+                    width:200px;
+                    flex:0 0 auto;
+                    background:blue;
+                }
+            </style>
+
+        </section>
+        <!--grid布局-->
+        <section>
+            <h2>三栏布局之grid</h2>
+            <div class="layout-grid">
+                <article class="grid-left">
+                    <p>这是左边</p>
+                </article>
+                <article class="grid-center">
+                    <p>这是中间</p>
+                    <p>grid布局</p>
+                </article>
+                <article class="grid-right">
+                    <p>这是右边</p>
+                </article>
+            </div>
+            <style>
+                .g-thrcols .layout-grid{
+                    display:grid;
+                    grid-template-columns:200px 1fr 200px;
+                }
+                .g-thrcols .grid-left{
+                    grid-column:1;
+                    background:red;
+                }
+                .g-thrcols .grid-center{
+                    grid-column:2;
+                    background:yellow;
+                }
+                .g-thrcols .grid-right{
+                    grid-column:3;
+                    background:blue;
+                }
+            </style>
+        </section>
+        <!--position布局-->
+        <section>
+            <h2>三栏布局之position</h2>
+            <div class="layout-position">
+                <article class="position-left">
+                    <p>这是左边</p>
+                </article>
+                <article class="position-center">
+                    <p>这是中间</p>
+                    <p>position布局</p>
+                </article>
+                <article class="position-right">
+                    <p>这是右边</p>
+                </article>
+            </div>
+            <style>
+                .g-thrcols .layout-position{
+                    position:relative;
+                    height: 150px;
+                }
+                .g-thrcols .layout-position>article{
+                    position:absolute;
+                    top:0;
+                    bottom:0;
+                }
+                .g-thrcols .position-left{
+                    width:200px;
+                    left:0;
+                    background:red;
+                }
+                .g-thrcols .position-center{
+                    left:200px;
+                    right:200px;
+                    background:yellow;
+                }
+                .g-thrcols .position-right{
+                    width:200px;
+                    right:0;
+                    background:blue;
+                }
+            </style>
+
+        </section>
+    </div>
+</div>
+</body>
+</html>

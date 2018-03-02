@@ -2,9 +2,142 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>盒模型介绍</title>
+    <style>
+        .g-doc section{
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            box-shadow: 1px 1px 5px #aaa;
+        }
+
+    </style>
 </head>
 <body>
+    <div class="g-doc">
+        <section>
+            <h2>盒模型</h2>
+            <!--盒模型包含：margin、border、padding、content-->
+            <img src="./source/box.jpg" alt="box">
+        </section>
+
+        <section>
+            <h2>ie模型和标准模型区别</h2>
+            <div class="m-box">
+                <div class="ie"></div>
+                <div class="standard"></div>
+            </div>
+            <style>
+                /*ie模型的width包含border，而标准模型只包含content！*/
+                /*通过box-sizing可以设置！*/
+                .m-box .ie{
+                    box-sizing: border-box;
+                }
+                .m-box .standard{
+                    box-sizing: content-box;
+                }
+                .m-box div{
+                    display: inline-block;
+                    width:100px;
+                    height:100px;
+                    padding: 10px;
+                    margin: 10px;
+                    border: 1px solid #000;
+                }
+            </style>
+        </section>
+        <section>
+            <h2>边界叠加之父子边界</h2>
+            <div class="m-margin-1">
+                <!--父子上margin发生叠加，取最大值即为30px！-->
+                <!--避免叠加：给父元素设置padding、border、float，inline-block，或者设为bfc、absolute定位！-->
+                <div class="father">
+                    <div class="son"></div>
+                </div>
+            </div>
+            <style>
+                .m-margin-1{
+                    border: 1px solid #000;
+                }
+                .m-margin-1 div{
+
+                }
+                .m-margin-1 .father{
+                    margin: 10px;
+                    height:100px;
+                    width:100px;
+                    background-color: #f00;
+                }
+                .m-margin-1 .son{
+                    margin: 30px;
+                    height:50px;
+                    width:50px;
+                    background-color: #0f0;
+                }
+            </style>
+        </section>
+        <section>
+            <h2>边界叠加之上下边界</h2>
+            <div class="m-margin-2">
+                <!--上下margin发生叠加，取最大值即为30px！-->
+                <!--避免叠加：将其中一个元素脱离文档流？-->
+                <div class="up"></div>
+                <div class="down"></div>
+            </div>
+            <style>
+                .m-margin-2{
+                    border: 1px solid #000;
+                }
+                .m-margin-2 .up{
+                    margin: 10px;
+                    height:100px;
+                    width:100px;
+                    background-color: #f00;
+                }
+                .m-margin-2 .down{
+                    margin: 30px;
+                    height:100px;
+                    width:100px;
+                    background-color: #0f0;
+                }
+            </style>
+        </section>
+        <section>
+            <h2>如何获取元素的宽高和坐标？</h2>
+
+            <div class="m-coord">我的宽高？我的坐标值？</div>
+
+            <style>
+                .m-coord{
+                    width: 100px;
+                    height: 100px;
+                    margin: 10px;
+                    padding:10px;
+                    border:1px solid #f00;
+                    background: #00ff00;
+                }
+            </style>
+            <script>
+                var box=document.querySelector(".m-coord");
+
+                //获取宽度
+                //1、通过style.width获知
+                var w1=parseFloat(box.style.width);
+                //2、通过clientWidth获知
+                var w2=parseFloat(box.clientWidth);
+                //3、通过window.getComputedStyle获取
+                var w3=window.getComputedStyle(box).width;
+                //4、通过getBoundingClientRect()获取
+                var w4=box.getBoundingClientRect().width;
+
+                //获取相对位置
+                //clientLeft获取边框的宽度
+                //offsetLeft相对于定位父元素（根元素或者position定位）的距离（包含父元素的padding）
+                //scrollLeft如果元素可以滚动，表示滚动距离
+                var lf=box.offsetLeft;
+            </script>
+        </section>
+    </div>
 
 </body>
 </html>
