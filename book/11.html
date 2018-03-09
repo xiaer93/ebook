@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css之动画篇</title>
+    <style>
+        .g-doc section{
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            box-shadow: 1px 1px 5px #aaa;
+        }
+    </style>
+</head>
+<body>
+
+<div class="g-doc">
+    <section>
+        <h2>2D立方体</h2>
+        <div class="m-2dcube">
+            <div class="container">
+                <div class="side top">上面</div>
+                <div class="side left">左面</div>
+                <div class="side right">右面</div>
+            </div>
+        </div>
+        <style>
+            .m-2dcube{
+                perspective: 1500px;
+                position: relative;
+                height: 200px;
+                left: 200px;
+            }
+            .m-2dcube .container{
+                transform-style: preserve-3d;
+            }
+            .m-2dcube .side{
+                height: 100px;
+                width:100px;
+                position: absolute;
+                font-size: 20px;
+                font-weight:bold;
+                line-height: 100px;
+                text-align: center;
+                color: #fff;
+                text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+                text-transform: uppercase;
+            }
+            .m-2dcube .top{
+                background-color: red;
+                transform: rotate(-45deg) skew(15deg,15deg);
+            }
+            .m-2dcube .left{
+                background-color: blue;
+                transform: rotate(15deg) skew(15deg,15deg) translate(-50%,100%);
+            }
+            .m-2dcube .right{
+                background-color: green;
+                transform: rotate(-15deg) skew(-15deg,-15deg) translate(50%,100%);
+            }
+        </style>
+    </section>
+    <section>
+        <h2>3D立方体</h2>
+        <div class="m-3dcube">
+            <div class="container">
+                <div class="side front">前面</div>
+                <div class="side back">后面</div>
+                <div class="side left">左面</div>
+                <div class="side right">右面</div>
+                <div class="side top">上面</div>
+                <div class="side bottom">下面</div>
+            </div>
+        </div>
+        <style>
+            .m-3dcube{
+                width: 300px;
+                height: 300px;
+                position: relative;
+                left: 200px;
+                perspective: 1200px;
+            }
+            .m-3dcube .container{
+                transform-style: preserve-3d;
+            }
+            .m-3dcube .side{
+                background: rgba(255,0,0,0.3);
+                border:1px solid red;
+                font-size: 60px;
+                font-weight:bold;
+                color: #fff;
+                text-align: center;
+                height: 196px;
+                line-height: 196px;
+                width: 196px;
+                position: absolute;
+                text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+                text-transform: uppercase;
+            }
+            .m-3dcube .front{
+                -webkit-transform: translateZ(100px);
+                -moz-transform: translateZ(100px);
+                -ms-transform: translateZ(100px);
+                -o-transform: translateZ(100px);
+                transform: translateZ(100px);
+            }
+            .m-3dcube .back{
+                -webkit-transform: rotateX(180deg) translateZ(100px);
+                -moz-transform: rotateX(180deg) translateZ(100px);
+                -ms-transform: rotateX(180deg) translateZ(100px);
+                -o-transform: rotateX(180deg) translateZ(100px);
+                transform: rotateX(180deg) translateZ(100px);
+            }
+            .m-3dcube .left{
+                -webkit-transform: rotateY(-90deg) translateZ(100px);
+                -moz-transform: rotateY(-90deg) translateZ(100px);
+                -ms-transform: rotateY(-90deg) translateZ(100px);
+                -o-transform: rotateY(-90deg) translateZ(100px);
+                transform: rotateY(-90deg) translateZ(100px);
+            }
+            .m-3dcube .right{
+                -webkit-transform: rotateY(90deg) translateZ(100px);
+                -moz-transform: rotateY(90deg) translateZ(100px);
+                -ms-transform: rotateY(90deg) translateZ(100px);
+                -o-transform: rotateY(90deg) translateZ(100px);
+                transform: rotateY(90deg) translateZ(100px);
+            }
+            .m-3dcube .top{
+                -webkit-transform: rotateX(90deg) translateZ(100px);
+                -moz-transform: rotateX(90deg) translateZ(100px);
+                -ms-transform: rotateX(90deg) translateZ(100px);
+                -o-transform: rotateX(90deg) translateZ(100px);
+                transform: rotateX(90deg) translateZ(100px);
+            }
+            .m-3dcube .bottom{
+                -webkit-transform: rotateX(-90deg) translateZ(100px);
+                -moz-transform: rotateX(-90deg) translateZ(100px);
+                -ms-transform: rotateX(-90deg) translateZ(100px);
+                -o-transform: rotateX(-90deg) translateZ(100px);
+                transform: rotateX(-90deg) translateZ(100px);
+            }
+            .m-3dcube .container:hover{
+                -webkit-animation: spin 5s linear infinite;
+                -o-animation: spin 5s linear infinite;
+                animation: spin 5s linear infinite;
+            }
+            @keyframes spin {
+                from{
+                    -webkit-transform: rotateY(0deg);
+                    -moz-transform: rotateY(0deg);
+                    -ms-transform: rotateY(0deg);
+                    -o-transform: rotateY(0deg);
+                    transform: rotateY(0deg);}
+                to{
+                    -webkit-transform: rotateY(360deg);
+                    -moz-transform: rotateY(360deg);
+                    -ms-transform: rotateY(360deg);
+                    -o-transform: rotateY(360deg);
+                    transform: rotateY(360deg);
+                }
+            }
+        </style>
+    </section>
+    <section>
+        <h2>图片墙</h2>
+        <div class="m-picture">
+            <ul>
+                <li><a href="" title="月月"><img src="./source/1.png" alt="月月"></a></li>
+                <li><a href="" title="花花"><img src="./source/2.png" alt="花花"></a></li>
+                <li><a href="" title="贝贝"><img src="./source/3.jpg" alt="贝贝"></a></li>
+            </ul>
+        </div>
+        <style>
+            .m-picture ul{
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                text-align: center;
+                margin-top: 100px;
+            }
+            .m-picture ul li{
+                display: inline-block;
+            }
+            .m-picture ul li a{
+                float: left;
+                border: 1px solid;
+                margin: 0 0 50px 60px;
+                padding: 12px;
+                background-color: white;
+                box-shadow: 0 3px 6px rgba(0,0,0,.25);
+
+                text-align: center;
+                text-decoration: none;
+
+                -webkit-transform: rotate(-2deg);
+                -moz-transform: rotate(-2deg);
+                -ms-transform: rotate(-2deg);
+                -o-transform: rotate(-2deg);
+                transform: rotate(-2deg);
+                /*过渡动画，图片2d旋转！*/
+                -webkit-transition: transform 0.15s linear;
+                -moz-transition: transform 0.15s linear;
+                -ms-transition: transform 0.15s linear;
+                -o-transition: transform 0.15s linear;
+                transition: transform 0.15s linear;
+            }
+            .m-picture ul li:nth-child(even) a{/*偶数的孩子旋转10deg！*/
+                transform: rotate(10deg);
+            }
+
+            .m-picture ul li a:hover{/*鼠标经过a标签paddingedg，图片摆正放大！*/
+                transform: scale(1.25);/*设置放大后，原有的transform失效！【一个标签只有一个transform标签属性！】*/
+                -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.5);
+                -moz-box-shadow: 0 3px 6px rgba(0,0,0,.5);
+                box-shadow: 0 3px 6px rgba(0,0,0,.5);
+            }
+
+            .m-picture ul li a:after{
+                content: attr(title);
+            }
+            .m-picture ul li a img{
+                display: block;
+                width: 100px;
+                border: none;
+                margin-bottom: 12px;
+            }
+        </style>
+    </section>
+    <section>
+        <h2>VIP卡片翻转</h2>
+        <div class="m-vip">
+            <div class="vip">
+                <div class="img">vip:1001</div>
+                <span class="information">满300减200！</span>
+            </div>
+        </div>
+        <style>
+            .m-vip{
+                perspective: 1500px;
+            }
+            .m-vip .vip{
+                position: relative;
+                transform-style: preserve-3d;
+                width:200px;
+                height: 130px;
+                left:200px;
+                cursor: pointer;
+                transition: transform .6s;
+            }
+            .m-vip .vip .img{
+                position: absolute;
+                top:0;
+                width:200px;
+                height: 130px;
+                border-radius: 3px;
+                box-shadow: 0 3px 8px rgba(0,0,0,.3);
+                background: url("./source/1.png") no-repeat center;
+                background-size: contain;
+                transform: translateZ(50px);
+                transition: all .6s;
+            }
+            .m-vip .vip span{
+                position: absolute;
+                top:0;
+                width:200px;
+                height: 130px;
+                line-height: 130px;
+                border-radius: 15px;
+                vertical-align: middle;
+                text-align: center;
+                background-color: white;
+                transform: rotateX(-90deg) translateZ(50px);
+                transition: all .6s;
+            }
+            .m-vip .vip:hover{
+                transform: translateZ(-50px) rotateX(90deg);
+            }
+            .m-vip .vip:hover .img{
+                box-shadow: none;
+                border-radius: 15px;
+            }
+            .m-vip .vip:hover span{
+                box-shadow: 0 3px 8px rgba(0,0,0,.3);
+                border-radius: 15px;
+            }
+
+        </style>
+    </section>
+    <section>
+        <h2>flex伸缩</h2>
+        <div class="m-flex">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <style>
+            .m-flex{
+                width:600px;
+                height:50px;
+                display: flex;
+            }
+            .m-flex div{
+                width: 20px;
+                flex-grow: 1;
+                -webkit-transition: width 0.5s ease-out;
+                -moz-transition: width 0.5s ease-out;
+                -ms-transition: width 0.5s ease-out;
+                -o-transition: width 0.5s ease-out;
+                transition: width 0.5s ease-out;
+            }
+            .m-flex div:nth-child(1){
+                background: red;
+            }
+            .m-flex div:nth-child(2){
+                background: blue;
+            }
+            .m-flex div:nth-child(3){
+                background: green;
+            }
+            .m-flex div:hover{
+                width:300px;
+            }
+        </style>
+    </section>
+    <section>
+        <h2>loading动画</h2>
+        <div class="m-loading">
+            <div class="loading">
+                <div class="circle"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+                <div class="outer"></div>
+            </div>
+        </div>
+        <style>
+            .m-loading .loading{
+                position: relative;
+                display: inline-block;
+                margin: 20px 0;
+                height: 120px;
+                width: 120px;
+            }
+            .m-loading .loading div{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-top: -40px;
+                margin-left: -40px;
+            }
+            .m-loading .outer{
+                box-sizing: border-box;
+                width: 112px;
+                height: 112px;
+                border: 2px solid crimson;
+                border-radius: 56px;
+                margin-top: -55px !important;
+                margin-left: -55px !important;
+                border-top-color: transparent;
+            }
+            .m-loading .circle{
+                border: 40px solid rgb(153, 153, 153);
+                border-radius: 40px;
+                height: 0;
+                width: 0;
+            }
+            .m-loading .left,.right{
+                transform-origin: 40px 40px;
+            }
+            .m-loading .left{
+                width: 80px;
+                height: 40px;
+                border-radius: 80px 80px 0 0;
+                background-color: #DC143C;
+                transform: rotate(90deg);
+                z-index: 1;
+            }
+            .m-loading .right{
+                width: 80px;
+                height: 40px;
+                border-radius: 80px 80px 0 0;
+                background-color: #999;
+                transform: rotate(90deg);
+                z-index: 2;
+            }
+
+            .m-loading .outer{
+                animation: outer 0.5s infinite linear;
+            }
+            @keyframes outer {
+                0%{
+                    transform: rotate(0deg);
+                }
+                100%{
+                    transform: rotate(360deg);
+                }
+            }
+            /*rotate的值可以超过360deg！*/
+            .m-loading .left{
+                animation: left 1s infinite linear;
+            }
+            @keyframes left {
+                0%{
+                    z-index: 1;
+                    transform: rotate(90deg);
+                }
+                25%{
+                    z-index: 1;
+                    transform: rotate(270deg);
+                }
+                25.1%{
+                    z-index: 2;
+                }
+                50%{
+                    transform: rotate(270deg);
+                }
+                75%{
+                    z-index: 2;
+                    transform: rotate(450deg);
+                }
+                75.1%{
+                    z-index: 1;
+                }
+                100%{
+                    z-index: 1;
+                    transform: rotate(450deg);
+                }
+
+            }
+            .m-loading .right{
+                animation: right 1s infinite linear;
+            }
+            @keyframes right {
+                0%{
+                    z-index: 2;
+                    transform: rotate(90deg);
+                }
+                25%{
+                    z-index: 2;
+                    transform: rotate(90deg);
+                }
+                25.1%{
+                    z-index: 1;
+                }
+                50%{
+                    transform: rotate(270deg);
+                }
+
+                75%{
+                    z-index: 1;
+                    transform: rotate(270deg);
+                }
+                75.1%{
+                    z-index: 2;
+                }
+                100%{
+                    z-index: 2;
+                    transform: rotate(450deg);
+                }
+            }
+            .m-loading .circle{
+                animation: circle 1s infinite linear;
+            }
+            @keyframes circle {
+                0%{
+                    border-color: #999;
+                }
+                25%{
+                    border-color: #999;
+                }
+                25.1%{
+                    border-color: #DC143C;
+                }
+                75%{
+                    border-color: #DC143C;
+                }
+                75.1%{
+                    border-color: #999;
+                }
+                100%{
+                    border-color: #999;
+                }
+            }
+        </style>
+    </section>
+    <section>
+        <h2>hover动画</h2>
+        <div class="m-welcome">
+            <figure class="welcome">
+                <img src="./source/bg.jpg" alt="bg">
+                <div class="welcomeInfo">
+                    <h3>欢迎浏览 共同学习</h3>
+                    <a href="#">点击进入</a>
+                </div>
+            </figure>
+        </div>
+        <style>
+            .m-welcome .welcome{
+                position: relative;
+                display: inline-block;
+                width: 500px;
+            }
+            .m-welcome .welcome img{
+                width: 100%;
+            }
+            .m-welcome .welcomeInfo{
+                position: absolute;
+                width: 70%;
+                height: 70%;
+                left:50%;
+                top: 50%;
+                transform: translate(-50%,-50%);
+            }
+
+            /*背景虚化动画 -webkit-filter私有属性 Filter函数*/
+            .m-welcome .welcome:hover img{
+                -webkit-filter: blur(2px);
+                filter: blur(2px);
+            }
+
+            /*线条动画*/
+            .m-welcome .welcomeInfo:after{
+                box-sizing: border-box;
+                content: "";
+                width: 0;
+                height: 100%;
+                border-width: 2px 0;
+                border-style: solid;
+                border-color: #f0f0f0;
+                position: absolute;
+                left: 50%;
+                top:0;
+            }
+            .m-welcome .welcomeInfo:before{
+                box-sizing: border-box;
+                display: inline-block;
+                content: "";
+                width: 100%;
+                height: 0;
+
+                border-width: 0 2px;
+                border-style: solid;
+                border-color: #f0f0f0;
+                position: absolute;
+                left: 0;
+                top: 50%;
+            }
+            .m-welcome .welcome:hover>div:after{
+                left: 0;
+                width: 100%;
+
+                transition: all 3s;
+            }
+            .m-welcome .welcome:hover>div:before{
+                top:0;
+                height: 100%;
+
+                transition: all 3s;
+            }
+
+            /*文字动画*/
+            .m-welcome .welcomeInfo h3{
+                background: linear-gradient(to left, blue 0,yellow 16.66%, red 33.33%, blue 50%,yellow 66.66%, red 83.33%, blue 100%);
+                -webkit-background-clip: text;
+                animation: textAnimation 3s infinite linear;
+                color: transparent;
+                background-size: 200% 100%;
+
+                font-size: 30px;
+                font-family: "Microsoft Tai Le", "sans-serif";
+
+            }
+            @keyframes textAnimation {
+                0%{
+                    background-position: left;
+                }
+                100%{
+                    background-position: right;
+                }
+            }
+
+            /*按钮样式*/
+            .m-welcome .welcomeInfo a{
+                position: relative;
+                text-decoration: none;
+                font-size: 15px;
+                cursor: pointer;
+                z-index: 999;
+            }
+            .m-welcome .welcomeInfo a:hover{
+                font-size: 18px;
+            }
+
+            /*动画可见性welcomeInfo可见性控制*/
+            .m-welcome .welcomeInfo{
+                visibility: hidden;
+            }
+            .m-welcome .welcome:hover .welcomeInfo{
+                visibility: visible;
+            }
+
+        </style>
+    </section>
+</div>
+
+</body>
+</html>

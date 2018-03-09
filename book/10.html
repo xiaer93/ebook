@@ -2,9 +2,200 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>css之动画篇</title>
+    <title>css之选择器</title>
+    <style>
+        .g-doc section{
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            box-shadow: 1px 1px 5px #aaa;
+        }
+    </style>
 </head>
 <body>
+
+<div class="g-doc">
+    <section>
+        <h2>纯css花纹</h2>
+        <div class="m-pattern">
+            <div class="pattern-1"></div>
+            <div class="pattern-2"></div>
+        </div>
+        <style>
+            .m-pattern div{
+                width: 200px;
+                height: 200px;
+                margin: 10px;
+                box-shadow: 0 1px 8px #666;
+            }
+            .m-pattern .pattern-1{
+                -webkit-background-size: 25px 25px;
+                background-size: 25px 25px;
+                background-image:linear-gradient(45deg, #555 25%, transparent 25%, transparent), linear-gradient(-45deg, #555 25%, transparent 25%, transparent), linear-gradient(45deg, transparent 75%, #555 75%), linear-gradient(-45deg, transparent 75%, #555 75%);
+            }
+            .m-pattern .pattern-2{
+                background-color: #655;
+                background-image: radial-gradient(tan 15%, transparent 0), radial-gradient(tan 15%, transparent 0);
+                background-size: 60px 60px;
+                background-position: 0 0, 30px 30px;
+            }
+        </style>
+    </section>
+    <section>
+        <h2>百度文库之相关文档推荐</h2>
+        <div class="m-wenku">
+            <ul>
+                <li>
+                    <p class="name"><a href="1.doc"><i></i>人教版五年级上册语文教...</a></p>
+                    <div class="detail">
+                        <span class="star">
+                            <i class="star-full"></i>
+                            <i class="star-full"></i>
+                            <i class="star-full"></i>
+                            <i class="star-full"></i>
+                            <i class="star-half"></i>
+                        </span>
+                        <span class="page">6</span>
+                        <span class="cost">免费</span>
+                    </div>
+                </li>
+                <li>
+                    <p class="name"><a href="2.ppt"><i></i>人教版五年级上册语文教...</a></p>
+                    <div class="detail">
+                        <span class="star">
+                            <i class="star-full"></i>
+                            <i class="star-full"></i>
+                            <i class="star-full"></i>
+                            <i class="star-full"></i>
+                            <i class="star-half"></i>
+                        </span>
+                        <span class="page">6</span>
+                        <span class="cost">免费</span>
+                    </div>
+                </li>
+                <li>
+                    <p class="name"><a href="3.doc"><i></i>人教版五年级上册语文教...</a></p>
+                    <div class="detail">
+                        <span class="star">
+                            <i class="star-full"></i>
+                            <i class="star-full"></i>
+                            <i class="star-full"></i>
+                            <i class="star-full"></i>
+                            <i class="star-half"></i>
+                        </span>
+                        <span class="page">6</span>
+                        <span class="cost">免费</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <style>
+            .m-wenku ul{
+                margin:0;
+                padding:0;
+                list-style:none;
+            }
+            .m-wenku li{
+                margin: 5px 0;
+            }
+            .m-wenku .name{
+                margin:0;
+            }
+            .m-wenku .name a{
+                text-decoration: none;
+            }
+            .m-wenku .name a:hover{
+                text-decoration: underline;
+            }
+            .m-wenku .name a i{
+                display: inline-block;
+                width: 16px;
+                height:16px;
+                margin-right: 8px;
+                margin-bottom: 5px;
+                vertical-align: middle;
+                background: url(//wkstatic.bdimg.com/static/wkcommon/pkg/pkg_wkcommon_base_z_6fd720e.png);
+                background-repeat: no-repeat;
+            }
+            /*css选择器，属性选择*/
+            .m-wenku .name a[href$=".doc"] i{
+                background-position: -193px -991px;
+            }
+            .m-wenku .name a[href$=".ppt"] i{
+                background-position: -193px -1138px;
+            }
+            .m-wenku .detail{
+                padding-left: 24px;
+            }
+            .m-wenku .detail .star i{
+                display: inline-block;
+                width: 13px;
+                height:16px;
+                background: url(//wkstatic.bdimg.com/static/wkcommon/widget/ui/css_core/ui/icon/images/stars_1ba0d81.png) no-repeat;;
+            }
+            .m-wenku .detail .star .star-full{
+                background-position: -129px 0;
+            }
+            .m-wenku .detail .star .star-half{
+                background-position: -167px 0;;
+            }
+            .m-wenku .detail .page{
+                display: inline-block;
+                width:44px;
+            }
+            .m-wenku .detail .cost{
+                display: inline-block;
+                width: 66px;
+            }
+        </style>
+    </section>
+    <section>
+        <h2>多级列表</h2>
+        <div class="m-list">
+            <ol>
+                <li>一级列表项目1
+                    <ol>
+                        <li>二级列表项目1</li>
+                        <li>二级列表项目2
+                            <ol>
+                                <li>三级列表项目1</li>
+                                <li>三级列表项目2</li>
+                            </ol>
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+        </div>
+        <style>
+            .m-list ol{
+                list-style: none;
+            }
+            .m-list li:before{
+                color: #f00;
+                font-family: "Times New Roman","sans-serif";
+            }
+            .m-list li{
+                counter-increment: a 1;
+            }
+            .m-list li:before{
+                content: counter(a)". ";
+            }
+            .m-list li li{
+                counter-increment: b 1;
+            }
+            .m-list li li:before{
+                content: counter(a)"."counter(b)". ";
+            }
+            .m-list li li li{
+                counter-increment: c 1;
+            }
+            .m-list li li li:before{
+                content: counter(a)"."counter(b)"."counter(c)". ";
+            }
+
+        </style>
+    </section>
+</div>
 
 </body>
 </html>

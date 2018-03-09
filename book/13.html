@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js之拖放</title>
+    <style>
+        .g-doc section{
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            box-shadow: 1px 1px 5px #aaa;
+        }
+    </style>
+</head>
+<body>
+
+<div class="g-doc">
+    <section>
+        <div class="m-drag">
+            <ul class="dustbin"></ul>
+            <ul class="dragbox">
+                <li class="dragItem" draggable="true">垃圾1</li>
+                <li class="dragItem" draggable="true">垃圾2</li>
+                <li class="dragItem" draggable="true">垃圾3</li>
+                <li class="dragItem" draggable="true">垃圾4</li>
+            </ul>
+        </div>
+    </section>
+    <style>
+        .m-drag{
+            display: flex;
+            height: 300px;
+        }
+        .m-drag .dustbin{
+            height:100%;
+            width:100px;
+            margin:0;
+            padding: 0;
+            border: 1px solid #000;
+        }
+        .m-drag .dragbox{
+            margin: 0 0 0 20px;
+            height: 100%;
+            flex: 1 1 auto;
+            border: 1px solid #000;
+        }
+        .m-drag .dragbox li{
+            height: 50px;
+            margin: 10px 0;
+            border: 1px solid red;
+        }
+
+    </style>
+    <script>
+
+        var box=null;
+
+        var dragItems=document.querySelectorAll('.m-drag .dragbox li');
+        var dustbin=document.querySelector('.m-drag .dustbin');
+        var dragBox=document.querySelector('.m-drag .dragbox');
+        dragItems=[].slice.call(dragItems);
+        for(var i=0,len=dragItems.length;i<len;++i){
+            var item=dragItems[i];
+            //避免选中文字
+            item.onselectstart=function () {
+                return false;
+            };
+            //为什么不能通过dom1添加dragstart事件！？？？
+            item.addEventListener('dragstart',function (e) {
+                e.dataTransfer.setData('text',e.target.innerHTML);
+                e.dataTransfer.setDragImage(e.target,0,0);
+                e.dataTransfer.effectAllowed = "move";
+                box=e.target;
+                e.target.style.opacity = .5;
+                return true;
+            });
+            item.ondragend=function (e) {
+                e.dataTransfer.clearData('text');
+                box=null;
+                e.target.style.opacity = '';
+                return false;
+            };
+        }
+        dustbin.ondragover=function (e) {
+            e.preventDefault();
+            return true;
+        };
+        dustbin.ondragenter=function (e) {
+            e.preventDefault();
+            this.style.background='red';
+        };
+        dustbin.ondragleave=function (e) {
+            this.style.background='white';
+        };
+        dustbin.ondrop=function (e) {
+            e.preventDefault();
+            this.style.background='white';
+            if(box){
+                console.log(e.dataTransfer.getData("Text"));
+                dragBox.removeChild(box);
+                dustbin.appendChild(box);
+            }
+        }
+
+    </script>
+</div>
+
+</body>
+</html>
